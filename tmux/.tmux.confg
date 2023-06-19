@@ -1,0 +1,31 @@
+set -g prefix C-b
+
+set -g default-terminal "screen-256color"
+
+# set -g @plugin 'egel/tmux-gruvbox'
+# set -g @tmux-gruvbox 'dark' # or 'light'
+
+set -g status off
+set -g mouse on 
+
+#up
+bind-key k select-pane -U
+#down
+bind-key j select-pane -D
+#left
+bind-key h select-pane -L
+#right
+bind-key l select-pane -R
+
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
+# open new window in current pane dir
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+run '~/.tmux/plugins/tpm/tpm'
+
+set-option -g default-shell /bin/zsh
