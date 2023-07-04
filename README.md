@@ -1,2 +1,2 @@
-# configuration
+# Dotfiles
 some config of macOS
